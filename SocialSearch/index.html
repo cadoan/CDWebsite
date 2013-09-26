@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Social Searcher</title>
+	<link rel="stylesheet" type="text/css" href="style/stylesheets/screen.css">
+	<script src="js/libs/require.js" data-main="js/main"></script>
+</head>
+<body>
+	<div id="social-header">
+		<div>Search Instagram & Tumblr: </div>
+
+
+		<form>
+			<!-- <a id="popular" href="#" data-bind="click: doPopular">See What's Popular Now</a> -->
+
+			<input type="text" data-bind="value: searchterm">
+			<input type="submit" data-bind="click: doSearch" value="search">
+		</form>
+
+		<div data-bind="text: message"></div>
+	</div>
+
+
+	<div id="thumb-wrapper" data-bind="foreach: {data: cards, afterAdd: thumbAdded}">
+		<div class="flipcard">
+			<div class="inner" data-bind="css: flipState">
+				<a class="face faceA" data-bind="attr: {href: faceA().link}">
+					<img data-bind="attr: {src: faceA().url }, css: { wideimage: faceA().width() > faceA().height(), hidden: faceA().url() == ''}">
+					<span class="icon" data-bind="css: faceA().network"></span>
+				</a>
+
+				<a class="face faceB" data-bind="attr: {href: faceB().link}">
+					<img data-bind="attr: {src: faceB().url}, css: { wideimage: faceB().width() > faceB().height() }">
+					<span class="icon" data-bind="css: faceB().network"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "isotope";
+@import "sprites/*.png";
+
+@include all-sprites-sprites;
+ 
+$smallsize: 125px; 
+$largesize: 250px;
+$margin: 4px;
+
+body{
+	background: black;
+}
+
+#social-header{
+	margin: 20px 0;
+	text-align: center;
+	color: white;
+	font-family: sans-serif;
+	font-weight: bold;
+
+	form{
+		display: inline-block;
+	}
+
+	#popular{
+		color: white;
+		margin-right: 20px;
+	}
+}
+
+
+#thumb-wrapper{
+
+}
+.flipcard{
+	@include inline-block;
+	margin: 0 $margin $margin 0;
+
+
+	&:nth-child(3n) .inner{
+		width: $largesize+$margin;
+		height: $largesize+$margin;
+	}
+
+	.inner{
+		width: $smallsize;
+		height: $smallsize;
+
+		position: relative;
+		@include perspective(600px);
+		@include transform-style(preserve-3d);
+		@include transition-property(transform);
+		@include transition-duration(1s);
+		
+
+		&.flipped{
+			@include transform (rotateX(180deg));
+		}
+
+
+		.face{
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-size: cover !important;
+			@include backface-visibility(hidden);
+			overflow: hidden;
+
+			color: white;
+			font-weight: bold;
+
+			img{
+				width: 100%;
+				height: auto;
+			}
+			img.wideimage{
+				width: auto;
+				height: 100%;
+			}
+			img.hidden{
+				display: none;
+			}
+
+			&.faceA{
+				background: #000033;
+			}
+			&.faceB{
+				background: #000033;
+				@include transform (rotateX(180deg));
+			}
+
+			.icon{
+				@include inline-block;
+				@include backface-visibility(hidden);
+				position: absolute;
+				right: 7px;
+				bottom: 7px;
+
+				&.fb{
+					@include sprites-sprite(fb);
+					height: sprites-sprite-height(fb);
+					width: sprites-sprite-width(fb);			
+				}
+				&.twitter{
+					@include sprites-sprite(twitter);
+					height: sprites-sprite-height(twitter);
+					width: sprites-sprite-width(twitter);		
+				}
+				&.instagram{
+					@include sprites-sprite(instagram);
+					height: sprites-sprite-height(instagram);
+					width: sprites-sprite-width(instagram);		
+				}
+				&.tumblr{
+					@include sprites-sprite(tumblr);
+					height: sprites-sprite-height(tumblr);
+					width: sprites-sprite-width(tumblr);					
+				}
+			}
+
+			.number{
+				@include inline-block;
+				position: absolute;
+				top: 5px;
+				left: 5px;
+				color: yellow;
+				font-weight: bold;
+				font-size: 40px;
+			}
+
+		}
+	}
+
+	
+}
+
